@@ -6,4 +6,4 @@ before_install:
   - docker build -t todoapp -f Dockerfile
 
 script:
-  - docker run -e CI=true todoapp npm run test -- --coverage
+  - docker run -e CI=true jnickbaughan/react-todo npm run test -- --coverage
