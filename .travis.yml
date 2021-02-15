@@ -7,3 +7,15 @@ before_install:
 
 script:
   - docker run -e CI=true jnickbaughan/react-todo npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "react-todo"
+  env: "Reacttodo-env-1"
+  bucket_name: "elasticbeanstalk-us-west-2-627003047393"
+  bucket_path: "react-todo"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
