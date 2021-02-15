@@ -1,0 +1,38 @@
+{
+  "name": "react-todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/plugin-transform-object-assign": "^7.10.4",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.1",
+    "fs-extra": "^9.0.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.1.1"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "build": "npm run copy-content && npm run build-frontend",
+    "build-frontend": "webpack --config webpack.config.js",
+    "watch:frontend": "webpack --watch --config webpack.config.js",
+    "copy-content": "node build-scripts/copy-content.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
