@@ -6,7 +6,7 @@ let server = express();
 const middlewares = [
   express.static("dist"),
   bodyParser.json(),
-  bodyParser.urlencoded({ extended: true }),
+  bodyParser.urlencoded({ extended: true })
 ];
 
 server.use(middlewares);
@@ -21,7 +21,6 @@ server.get("/", (_, res) => {
     <head></head>
     <body>
     <div id="root" />
-    Test
       <script src="/bundle.js"></script>
     </body>
   </html>
