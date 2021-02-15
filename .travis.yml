@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t jnickbaughan/react-todo -f Dockerfile.dev .
+  - docker build -t jnickbaughan/react-todo -f Dockerfile .
 
 script:
   - docker run -e CI=true jnickbaughan/react-todo npm run test
