@@ -11,10 +11,10 @@ script:
 deploy:
   provider: elasticbeanstalk
   region: "us-west-2"
-  app: "todo"
-  env: "todo-env"
+  app: "react-todo"
+  env: "Reacttodo-env-1"
   bucket_name: "elasticbeanstalk-us-west-2-627003047393"
-  bucket_path: "todo"
+  bucket_path: "react-todo"
   on:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
