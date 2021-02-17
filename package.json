@@ -33,7 +33,7 @@
     "start": "node dist/server-bundle.js",
     "build": "npm run build-frontend && npm run build-server",
     "build-frontend": "webpack --config webpack.config.js",
-    "watch-server": "webpack --config webpack.server.config.js",
+    "build-server": "webpack --config webpack.server.config.js",
     "watch:frontend": "webpack --watch --config webpack.config.js",
     "watch:server": "webpack --watch --config webpack.server.config.js",
     "copy-content": "node build-scripts/copy-content.js",
