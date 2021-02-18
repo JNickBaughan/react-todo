@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const { mapTodos } = require("./helpers");
 //test
 let PORT = process.env.port || 3000;
+console.dir(process.env.RDS_HOSTNAME || "local");
 let server = express();
 const middlewares = [
   express.static("dist"),
