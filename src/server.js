@@ -62,7 +62,7 @@ const todos = [
 ];
 
 server.get("/todos", (_, res) => {
-  res.send(mapTodos(todos));
+  res.send(mapTodos([...todos]));
 });
 
 server.get("/", (_, res) => {
