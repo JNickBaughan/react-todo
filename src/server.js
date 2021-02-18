@@ -75,6 +75,7 @@ server.get("/", (_, res) => {
   <html>
     <head></head>
     <body>
+    ${process.env.RDS_HOSTNAME}
     <div id="root" />
       <script src="/bundle.js"></script>
     </body>
