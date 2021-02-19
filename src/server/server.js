@@ -89,6 +89,16 @@ server.get("/todos", (_, res) => {
     .catch(() => res.send(mapTodos([...todos])));
 });
 
+server.get("/test", (_, res) => {
+  res.send({
+    host: process.env.RDS_HOSTNAME,
+    port: process.env.RDS_PORT,
+    database: process.env.RDS_DB_NAME || "todos",
+    user: process.env.RDS_USERNAME,
+    password: process.env.RDS_PASSWORD
+  });
+});
+
 server.get("/", (_, res) => {
   return res.send(`<!DOCTYPE html>
                     <style>
