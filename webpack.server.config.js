@@ -1,8 +1,9 @@
 var path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   mode: "development",
-  entry: "./src/server",
+  entry: "./src/server/server",
   devtool: "source-map",
   target: "node",
   output: {
@@ -35,5 +36,6 @@ module.exports = {
         loader: "file-loader"
       }
     ]
-  }
+  },
+  plugins: [new webpack.IgnorePlugin({ resourceRegExp: /^pg-native$/ })]
 };
