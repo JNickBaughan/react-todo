@@ -93,6 +93,7 @@ pool
                           ${process.env.RDS_DB_NAME}
                           <div id="root" />
                             <script src="/bundle.js"></script>
+                            <script>console.dir(${t.rows})</script>
                           </body>
                         </html>
                       `);
