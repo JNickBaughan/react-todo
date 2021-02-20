@@ -9,7 +9,7 @@ const getRouter = (pool) => {
     pool
       .query("SELECT * FROM todos.todo")
       .then((results) => {
-        return res.send(mapTodos([...results.rows]));
+        return res.send(results.rows);
       })
       .catch((e) => {
         console.dir(JSON.stringify(e));

@@ -2,37 +2,37 @@ var path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index",
+  entry: "./src/frontend/index",
   devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "bundle.js"
   },
   resolve: {
-    extensions: [".wasm", ".mjs", ".js", ".jsx", ".json"],
+    extensions: [".wasm", ".mjs", ".js", ".jsx", ".json"]
   },
   module: {
     rules: [
       {
         test: /\.m?jsx?$/,
         resolve: {
-          fullySpecified: false,
-        },
+          fullySpecified: false
+        }
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: "babel-loader"
       },
       {
         test: /\.png|jpg$/,
         exclude: /node_modules/,
-        loader: "file-loader",
-      },
-    ],
-  },
+        loader: "file-loader"
+      }
+    ]
+  }
 };
