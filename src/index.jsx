@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import { routes } from "./common/constants";
 
 const renderTodos = (todos, left) => {
   {
@@ -8,7 +9,9 @@ const renderTodos = (todos, left) => {
       return (
         <React.Fragment>
           <p style={{ marginLeft: `${left}px` }}>{todo.todo}</p>
-          {renderTodos(todo.children, left + 10)}
+          {todo.children &&
+            todo.children.length > 0 &&
+            renderTodos(todo.children, left + 10)}
         </React.Fragment>
       );
     });
@@ -19,7 +22,7 @@ const App = () => {
   const [todos, updateTodos] = React.useState([]);
   React.useEffect(() => {
     const getTodos = async () => {
-      const { data } = await axios.get("/todos");
+      const { data } = await axios.get(routes.GET_TODOS);
       updateTodos(data);
     };
     getTodos();
