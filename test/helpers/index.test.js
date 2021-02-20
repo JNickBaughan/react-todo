@@ -1,4 +1,4 @@
-import { mapTodos } from "../../src/helpers";
+import { mapTodos } from "../../src/common/helpers";
 
 test("sorts todos", () => {
   const todos = [{ id: 1 }, { id: 2, parent: 1 }, { id: 3, parent: 1 }];
