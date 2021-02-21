@@ -6,6 +6,8 @@ import Todos from "./components/todos";
 
 import { routes } from "../common/constants";
 
+import { findDescendentIds } from "../common/helpers";
+
 const App = () => {
   const [todos, updateTodos] = React.useState([]);
 
@@ -17,15 +19,29 @@ const App = () => {
     getTodos();
   }, []);
 
-  const checkTodo = (id) => {
-    updateTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, complete: !todo.complete };
-        }
-        return todo;
-      })
-    );
+  const checkTodo = (id, complete) => {
+    if (complete) {
+      const ancestor = [...findDescendentIds(id, todos), id];
+      updateTodos(
+        todos.map((todo) => {
+          if (ancestor.includes(todo.id)) {
+            return { ...todo, complete: true };
+          }
+          return todo;
+        })
+      );
+
+      // complete all ancestor todos
+    } else {
+      updateTodos(
+        todos.map((todo) => {
+          if (todo.id === id) {
+            return { ...todo, complete: !todo.complete };
+          }
+          return todo;
+        })
+      );
+    }
   };
 
   return (

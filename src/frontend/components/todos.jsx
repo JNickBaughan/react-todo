@@ -9,10 +9,7 @@ export const Todos = ({ todos, checkTodo }) => {
       return todos.map((todo) => {
         return (
           <React.Fragment>
-            <Todo
-              key={`${todo.id}_todo`}
-              {...{ ...todo, marginLeft: `${left}px`, checkTodo }}
-            />
+            <Todo key={`${todo.id}_todo`} {...{ ...todo, left, checkTodo }} />
             {todo.children &&
               todo.children.length > 0 &&
               renderTodos(todo.children, left + 50)}
@@ -22,7 +19,7 @@ export const Todos = ({ todos, checkTodo }) => {
     }
   };
 
-  return renderTodos(mapTodos(todos, 10));
+  return renderTodos(mapTodos(todos), 10);
 };
 
 export default Todos;

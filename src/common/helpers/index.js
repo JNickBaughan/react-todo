@@ -38,3 +38,14 @@ export const mapTodos = (todos) => {
   } while (todos.length);
   return sortedTodos;
 };
+
+export const findDescendentIds = (id, todos) => {
+  let ids = [];
+  todos.forEach((todo) => {
+    if (todo.parent === id) {
+      const childIds = findDescendentIds(todo.id, todos);
+      ids = [...ids, ...childIds, todo.id];
+    }
+  });
+  return ids;
+};

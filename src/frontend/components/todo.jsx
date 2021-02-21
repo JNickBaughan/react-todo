@@ -1,13 +1,13 @@
 import React from "react";
 
-export const Todo = ({ todo, complete, marginLeft, id, checkTodo }) => {
+export const Todo = ({ todo, complete, left, id, checkTodo }) => {
   return (
-    <label class="container" style={{ marginLeft: `${marginLeft}` }}>
+    <label class="container" style={{ marginLeft: `${left}px` }}>
       <input
         type="checkbox"
         checked={complete ? "checked" : ""}
         onClick={() => {
-          checkTodo(id);
+          checkTodo(id, !complete);
         }}
       />
       <span class="checkmark"></span>
