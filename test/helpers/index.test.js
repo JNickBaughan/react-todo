@@ -1,4 +1,10 @@
-import { mapTodos, findDescendentIds } from "../../src/common/helpers";
+import {
+  mapTodos,
+  findDescendentIds,
+  findSiblings,
+  siblingsAllComplete,
+  findIdsToComplete
+} from "../../src/common/helpers/todo-helpers";
 
 test("sorts todos", () => {
   const todos = [{ id: 1 }, { id: 2, parent: 1 }, { id: 3, parent: 1 }];
@@ -95,7 +101,7 @@ test("sorts todos", () => {
   expect(actual).toEqual(expected);
 });
 
-test("sorts todos", () => {
+test("get IDs of descendent todos", () => {
   const expected = [3, 4, 2, 5];
   const todos = [
     {
@@ -131,5 +137,115 @@ test("sorts todos", () => {
   ];
 
   const actual = findDescendentIds(1, todos);
+  expect(actual).toEqual(expected);
+});
+
+test("findIdsToComplete", () => {
+  const expected = [3, 1, 2, 4, 5];
+  const todos = [
+    {
+      id: 1,
+      complete: false
+    },
+    {
+      id: 2,
+      parent: 1,
+      complete: true
+    },
+    {
+      id: 3,
+      parent: 1,
+      complete: false
+    },
+    {
+      id: 4,
+      parent: 3,
+      complete: true
+    },
+    {
+      id: 5,
+      parent: 3,
+      complete: false
+    },
+    {
+      id: 5,
+      complete: false
+    }
+  ];
+
+  const actual = findIdsToComplete(5, 3, todos);
+  expect(actual).toEqual(expected);
+});
+
+test("gets a todos Sibling ", () => {
+  const expected = [
+    {
+      id: 4,
+      parent: 3,
+      complete: true
+    },
+    {
+      id: 5,
+      parent: 3,
+      complete: false
+    }
+  ];
+  const todos = [
+    {
+      id: 1,
+      complete: false
+    },
+    {
+      id: 2,
+      parent: 1,
+      complete: true
+    },
+    {
+      id: 3,
+      parent: 1,
+      complete: false
+    },
+    {
+      id: 4,
+      parent: 3,
+      complete: true
+    },
+    {
+      id: 5,
+      parent: 3,
+      complete: false
+    }
+  ];
+
+  const actual = findSiblings(todos, 3);
+  expect(actual).toEqual(expected);
+});
+
+test("are all siblings completed", () => {
+  const expected = true;
+  const todos = [
+    {
+      id: 2,
+      parent: 1,
+      complete: false
+    },
+    {
+      id: 3,
+      parent: 1,
+      complete: true
+    },
+    {
+      id: 4,
+      parent: 1,
+      complete: true
+    },
+    {
+      id: 5,
+      parent: 1,
+      complete: true
+    }
+  ];
+
+  const actual = siblingsAllComplete(todos, 1, 2);
   expect(actual).toEqual(expected);
 });

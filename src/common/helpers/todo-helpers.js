@@ -49,3 +49,42 @@ export const findDescendentIds = (id, todos) => {
   });
   return ids;
 };
+
+export const siblingsAllComplete = (todos, parentId, id) => {
+  return todos.every(
+    (todo) => (todo.complete && todo.parent === parentId) || todo.id === id
+  );
+};
+
+const removeDupes = (acc, curr) => {
+  if (!acc.includes(curr)) {
+    acc.push(curr);
+  }
+  return acc;
+};
+
+export const findSiblings = (todos, parentId) =>
+  todos.filter((todo) => todo.parent === parentId);
+
+export const findIdsToComplete = (id = -1, parentId = -1, todos = []) => {
+  const siblings = findSiblings(todos, parentId);
+  const allComplete = siblingsAllComplete(siblings, parentId, id);
+
+  if (allComplete) {
+    const parent = todos.find((todo) => todo.id === parentId);
+    if (parent && parent.parent) {
+      return [
+        parent.id,
+        ...findIdsToComplete(parentId, parent.parent, todos),
+        ...siblings.map((sibling) => sibling.id)
+      ].reduce(removeDupes, []);
+    } else {
+      return [
+        ...((parent && [parent.id]) || []),
+        ...siblings.map((sibling) => sibling.id)
+      ].reduce(removeDupes, []);
+    }
+  }
+
+  return [];
+};

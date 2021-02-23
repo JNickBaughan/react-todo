@@ -1,7 +1,7 @@
 import React from "react";
 import Todo from "./todo";
 
-import { mapTodos } from "../../common/helpers";
+import { mapTodos } from "../../common/helpers/todo-helpers";
 
 export const Todos = ({ todos, checkTodo }) => {
   const renderTodos = (todos, left) => {

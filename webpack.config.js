@@ -2,7 +2,7 @@ var path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/frontend/index",
+  entry: "./src/frontend/frontend",
   devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "dist"),

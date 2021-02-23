@@ -1,18 +1,18 @@
 import React from "react";
 
-export const Todo = ({ todo, complete, left, id, checkTodo }) => {
+export const Todo = ({ todo, complete, left, id, parent, checkTodo }) => {
   return (
-    <label class="container" style={{ marginLeft: `${left}px` }}>
+    <label className="container" style={{ marginLeft: `${left}px` }}>
       <input
         type="checkbox"
         checked={complete ? "checked" : ""}
         onClick={() => {
-          checkTodo(id, !complete);
+          checkTodo(id, parent, !complete);
         }}
       />
-      <span class="checkmark"></span>
+      <span className="checkmark"></span>
       {todo}
-      <span class="plus alt"></span>
+      <span className="plus alt"></span>
     </label>
   );
 };
