@@ -5,8 +5,13 @@ import getRouter from "./routes";
 import Pool from "./db/pool";
 
 let PORT = process.env.port || 3000;
+
 if (PORT === 3000) {
-  require("dotenv").config();
+  if (process.env.test) {
+    require("dotenv").config({ path: "C:/WorkBench/react-todo/.env-test" });
+  } else {
+    require("dotenv").config();
+  }
 }
 
 const dbConfig = {
@@ -33,7 +38,7 @@ Pool.connect(dbConfig).then(() => {
                         <style>
                         html,body{ width: 98vw; height: 96vh; font-family: Verdana, sans-serif;  }
                         #root{ height: 100%; }
-                        
+
                         /* The container */
                         .container {
                           display: block;

@@ -1,0 +1,11 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "env": {
+    "port": 3000,
+    "RDS_HOSTNAME": "localhost",
+    "RDS_PORT": 5432,
+    "db": "todostest",
+    "RDS_USERNAME": "postgres",
+    "RDS_PASSWORD": "0Ctavian"
+  }
+}
