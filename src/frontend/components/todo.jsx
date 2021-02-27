@@ -11,7 +11,7 @@ export const Todo = ({ todo, complete, left, id, parent, checkTodo }) => {
         }}
       />
       <span className="checkmark"></span>
-      {`id: ${id} parentID ${parent}`} {todo}
+      {todo}
       <span className="plus alt"></span>
     </label>
   );
