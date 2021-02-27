@@ -44,7 +44,7 @@
     "watch:frontend": "webpack --watch --config webpack.config.js",
     "watch:server": "webpack --watch --config webpack.server.config.js",
     "copy-content": "node build-scripts/copy-content.js",
-    "test": "jest",
+    "test": "jest test",
     "cy:open": "cypress open",
     "cy:run": "cypress run"
   },
