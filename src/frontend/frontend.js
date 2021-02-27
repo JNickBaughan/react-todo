@@ -8,7 +8,8 @@ import { routes } from "../common/constants";
 
 import {
   findDescendentIds,
-  findIdsToComplete
+  findIdsToComplete,
+  findIdsToUncomplete
 } from "../common/helpers/todo-helpers";
 
 const App = () => {
@@ -38,9 +39,11 @@ const App = () => {
 
       // complete all ancestor todos
     } else {
+      const uncompleteThese = findIdsToUncomplete(id, parentId, todos);
+      const descendents = [...findDescendentIds(id, todos), id];
       updateTodos(
         todos.map((todo) => {
-          if (todo.id === id) {
+          if ([...uncompleteThese, ...descendents].includes(todo.id)) {
             return { ...todo, complete: !todo.complete };
           }
           return todo;

@@ -66,6 +66,19 @@ const removeDupes = (acc, curr) => {
 export const findSiblings = (todos, parentId) =>
   todos.filter((todo) => todo.parent === parentId);
 
+export const findIdsToUncomplete = (id = -1, parentId = -1, todos = []) => {
+  const parentsParent = todos.find((todo) => todo.id === parentId);
+  if (parentsParent && parentsParent.parent) {
+    return [
+      ...findIdsToUncomplete(parentId, parentsParent.parent, todos),
+      id,
+      parentId,
+      parentsParent
+    ];
+  }
+  return [id, parentId, parentsParent];
+};
+
 export const findIdsToComplete = (id = -1, parentId = -1, todos = []) => {
   const siblings = findSiblings(todos, parentId);
   const allComplete = siblingsAllComplete(siblings, parentId, id);

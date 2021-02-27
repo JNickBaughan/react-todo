@@ -46,6 +46,7 @@ Pool.connect(dbConfig).then(() => {
                           -moz-user-select: none;
                           -ms-user-select: none;
                           user-select: none;
+                          max-width: fit-content;
                         }
 
                         /* Hide the browser's default checkbox */
