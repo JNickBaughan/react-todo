@@ -13,7 +13,7 @@ if (PORT === 3000) {
     require("dotenv").config();
   }
 }
-
+// test git
 const dbConfig = {
   host: process.env.RDS_HOSTNAME,
   port: process.env.RDS_PORT,
